@@ -18,9 +18,11 @@ def read_dataset():
         'ParroquiaCliente': 'category',
         'ParroquiaEvento': 'category',
         'ProvinciaCliente': 'category',
-        'ProvinciaEvento': 'category'}
+        'ProvinciaEvento': 'category',
+        'GeoIdCliente':'uint32',
+        'GeoIdEvento':'uint32'}
 
-    df_eventos = pd.read_csv("../EventosManabi.csv", encoding = "ISO-8859-1", dtype=col_dtypes, parse_dates=['FechaEvento'], infer_datetime_format=True)
+    df_eventos = pd.read_csv("../eventos.csv", encoding = "ISO-8859-1", dtype=col_dtypes, parse_dates=['FechaEvento'], infer_datetime_format=True)
     return df_eventos
 
 df = read_dataset()
