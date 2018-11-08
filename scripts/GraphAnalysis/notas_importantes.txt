@@ -1,2 +1,8 @@
 editado manualmente distancia entre Quito y Santa Ana de Vuelta Larga 396.6 km
 editado manualmente distancia entre Quito y 24 de mayo (sucre) 405.2 km 
+**20160417**
+editado manualmente distancia entre Quito y Bahia de caráquez 356.2 km
+editado manualmente distancia entre Quito y Manta 397.4 km
+editado manualmente distancia entre Quito y Flavio Alfaro 258.6 km
+editado manualmente distancia entre Quito y Pedernales 276.9 km
+editado manualmente distancia entre Quito y Charapotó 371.4 km

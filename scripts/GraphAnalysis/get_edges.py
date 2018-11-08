@@ -29,13 +29,11 @@ for record in f:
     #obtener distancia
     distancia = fields[-1]
 
-    if (date == '2016-04-15'):
+    if (date == '2016-04-17'):
     #if (id_evento != '?' and id_cliente != '?' and (fields[1] == '2016-07-16' or fields[1] == '2016-07-15')):
         if (id_evento, id_cliente) in pares:
-            print("I AM HERE")
             pares[(id_evento, id_cliente)][0] += int(usuarios)
         else:
-            print("I AM ALREADY")
             info =[int(usuarios),float(distancia)]
             pares[(id_evento, id_cliente)] = info
             #refrescar el valor de la maxima distancia dentro del dataset
