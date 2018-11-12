@@ -39,19 +39,12 @@ dscrpt_file.write(description)
 print(description)
 dscrpt_file.close()
 
-#pos=nx.get_node_attributes(G)
-#nx.draw(cdrs_net_1)
-#labels = nx.get_edge_attributes(cdrs_net_1,'weight')
-#nx.draw_networkx_edge_labels(cdrs_net_1, pos=nx.spring_layout(cdrs_net_1), edge_labels=labels)
-#plt.show()
-
-
-
 #Get the indegrees of nodes in both graphs
 in_degrees_graph_1 = dict(cdrs_net_1.in_degree(weight="weight"))
 in_degrees_graph_2 = dict(cdrs_net_2.in_degree(weight="weight"))
 
 #write in degrees results for graph 1
+'''
 results1 = open("output/in_degrees_graph_1.csv", "w")
 results1.write("GeoId,InDegree\n")
 for k,v in in_degrees_graph_1.items():
@@ -68,3 +61,13 @@ for k,v in in_degrees_graph_2.items():
 	print(line)
 	results2.write(line)
 results2.close()
+'''
+
+degree_sequence = sorted(in_degrees_graph_1.values(), reverse = True)
+dmax = max(degree_sequence)
+
+plt.loglog(degree_sequence, 'b-',marker='o')
+plt.title("Degree rank plot")
+plt.ylabel("degree")
+plt.xlabel("rank")
+plt.show()

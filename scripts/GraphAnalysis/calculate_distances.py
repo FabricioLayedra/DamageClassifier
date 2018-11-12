@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[10]:
+# In[3]:
 
 
 import pandas as pd
@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# In[11]:
+# In[4]:
 
 
 def distance_from_coords(row):
@@ -26,7 +26,7 @@ def distance_from_coords(row):
     return geopy.distance.geodesic(coords1,coords2).km
 
 
-# In[12]:
+# In[5]:
 
 
 df_eventos = pd.read_csv("../../eventos.csv", encoding = "ISO-8859-1", parse_dates=['FechaEvento'], infer_datetime_format=True)
@@ -35,7 +35,7 @@ df_eventos_abril = df_eventos[(df_eventos["FechaEvento"] == pd.datetime(2016,4,1
 df_eventos.shape
 
 
-# In[13]:
+# In[6]:
 
 
 
@@ -43,7 +43,7 @@ df_eventos_abril["Distancia"] = df_eventos_abril.apply(lambda row: distance_from
 df_eventos_abril["Distancia"]
 
 
-# In[14]:
+# In[7]:
 
 
 sns.distplot(df_eventos_abril['Distancia'], hist=True, kde=True, 
@@ -52,7 +52,7 @@ sns.distplot(df_eventos_abril['Distancia'], hist=True, kde=True,
              kde_kws={'linewidth': 4})
 
 
-# In[18]:
+# In[8]:
 
 
 df_eventos_abril.shape
@@ -62,7 +62,7 @@ df_eventos_abril.describe()
 #df_eventos_abril.to_csv("eventos_con_distancia_20160417.csv", sep=',')
 
 
-# In[16]:
+# In[9]:
 
 
 clientes = df_eventos_abril["GeoIdCliente"].rename(columns={"GeoIdCliente":"TorreId"})
@@ -72,9 +72,11 @@ torres = torres.drop_duplicates().reset_index()
 torres.shape
 
 
-# In[19]:
+# In[11]:
 
 
 df_16 = df_eventos[(df_eventos["FechaEvento"] == pd.datetime(2016,4,16)) ]
 df_16 = df_16.groupby(by="Hora").sum
+eventos_unicos = eventos.drop_duplicates().reset_index()
+eventos_unicos.shape
 
