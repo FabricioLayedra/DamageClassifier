@@ -19,7 +19,7 @@ max_distance = 0 #maxima distancia entre todas las actividades del dataset
 for record in f:
     record = record.strip()
     fields = record.split(',')
-    date = fields[1]
+    date = fields[2]
     #obtener GeoIdEvento 
     id_evento=fields[-2]
     #Obtener GeoIdCliente (estas torres van a apuntar a la torre con GeoIdEvento)
@@ -28,9 +28,18 @@ for record in f:
     usuarios = fields[-4]
     #obtener distancia
     distancia = fields[-1]
-
-    if (date == '2016-04-17'):
-    #if (id_evento != '?' and id_cliente != '?' and (fields[1] == '2016-07-16' or fields[1] == '2016-07-15')):
+    #obtener provincia cliente
+    prov_cliente = fields[3]
+    #obtener provincia evento
+    prov_evento = fields[10]
+    #obtener parroquia evento
+    parr_evento = fields[13]
+    #obtener parroquia cliente
+    parr_cliente = fields[6]
+    
+    #if (prov_evento=="MANABI" and prov_cliente=="MANABI" and parr_cliente!=parr_evento):
+    #if (parr_cliente==parr_evento):
+    if(prov_evento!=prov_cliente):
         if (id_evento, id_cliente) in pares:
             pares[(id_evento, id_cliente)][0] += int(usuarios)
         else:
@@ -42,11 +51,18 @@ for record in f:
 f.close()
 
 #create the file to form the graph
+#v is [users,distance]
+#k is (event_tower,home_tower)
 for k,v in pares.items():
+    #if there was just one user
     if(v[0]==1):
-        weight = log(v[0]) * (v[1]/max_distance)
+        weight = log(v[0]+1)
     else:
-        weight = log(v[0] + 1) * (v[1]/max_distance)
+        weight = log(v[0])
+    if(v[1]==0):
+        weight = weight*(v[1]+1/max_distance)
+    else:
+        weight = weight*(v[1]/max_distance)
 
     print(k[1] + ',' + k[0] + ',' + str(weight) + '\n')
     f2.write(k[1] + ',' + k[0] + ',' + str(weight) + '\n')

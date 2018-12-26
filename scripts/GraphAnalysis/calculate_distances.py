@@ -1,7 +1,7 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[21]:
 
 
 import pandas as pd
@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# In[4]:
+# In[22]:
 
 
 def distance_from_coords(row):
@@ -26,16 +26,16 @@ def distance_from_coords(row):
     return geopy.distance.geodesic(coords1,coords2).km
 
 
-# In[5]:
+# In[23]:
 
 
 df_eventos = pd.read_csv("../../eventos.csv", encoding = "ISO-8859-1", parse_dates=['FechaEvento'], infer_datetime_format=True)
 #here replace date as you wish
-df_eventos_abril = df_eventos[(df_eventos["FechaEvento"] == pd.datetime(2016,4,15)) ]
+df_eventos_abril = df_eventos[(df_eventos["FechaEvento"] == pd.datetime(2016,4,17)) ]
 df_eventos.shape
 
 
-# In[6]:
+# In[24]:
 
 
 
@@ -43,7 +43,7 @@ df_eventos_abril["Distancia"] = df_eventos_abril.apply(lambda row: distance_from
 df_eventos_abril["Distancia"]
 
 
-# In[7]:
+# In[25]:
 
 
 sns.distplot(df_eventos_abril['Distancia'], hist=True, kde=True, 
@@ -52,17 +52,17 @@ sns.distplot(df_eventos_abril['Distancia'], hist=True, kde=True,
              kde_kws={'linewidth': 4})
 
 
-# In[8]:
+# In[26]:
 
 
 df_eventos_abril.shape
 df_eventos_abril.describe()
-#df_eventos_abril.loc[df_eventos_abril["Distancia"]>2000,"Distancia"] = 12345678910
+df_eventos_abril.loc[df_eventos_abril["Distancia"]>2000,"Distancia"] = 12345678910
 #here replace file name as you wish
-#df_eventos_abril.to_csv("eventos_con_distancia_20160417.csv", sep=',')
+df_eventos_abril.to_csv("distancias_20160417.csv", sep=',', index=False) #when executing get_edges.py, check column index, for example, date=fields[2] or fields[3]
 
 
-# In[9]:
+# In[27]:
 
 
 clientes = df_eventos_abril["GeoIdCliente"].rename(columns={"GeoIdCliente":"TorreId"})
@@ -72,11 +72,24 @@ torres = torres.drop_duplicates().reset_index()
 torres.shape
 
 
-# In[11]:
+# In[28]:
 
 
 df_16 = df_eventos[(df_eventos["FechaEvento"] == pd.datetime(2016,4,16)) ]
 df_16 = df_16.groupby(by="Hora").sum
 eventos_unicos = eventos.drop_duplicates().reset_index()
 eventos_unicos.shape
+
+
+# In[34]:
+
+
+#obtain list of column names
+list(df_eventos_abril)
+
+
+# In[ ]:
+
+
+
 
