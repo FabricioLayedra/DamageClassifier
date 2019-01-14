@@ -43,28 +43,16 @@ for record in f:
     if (id_evento, id_cliente) in pares:
         pares[(id_evento, id_cliente)][0] += int(usuarios)
     else:
-        info =[int(usuarios),float(distancia)]
+        info =[int(usuarios)]
         pares[(id_evento, id_cliente)] = info
-        #refrescar el valor de la maxima distancia dentro del dataset
-        if(float(distancia)>max_distance):
-            max_distance = float(distancia)
+        
 f.close()
 
 #create the file to form the graph
 #v is [users,distance]
 #k is (event_tower,home_tower)
 for k,v in pares.items():
-    #if there was just one user
-    if(v[0]==1):
-        weight = log(v[0]+1)
-    else:
-        weight = log(v[0])
-    if(v[1]==0):
-        weight = weight*(v[1]+1/max_distance)
-    else:
-        weight = weight*(v[1]/max_distance)
-
-    print(k[1] + ',' + k[0] + ',' + str(weight) + '\n')
+    weight = v[0]
     f2.write(k[1] + ',' + k[0] + ',' + str(weight) + '\n')
 
 f2.close()

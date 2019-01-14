@@ -65,6 +65,7 @@ df_eventos_abril.to_csv("distancias_20160417.csv", sep=',', index=False) #when e
 # In[27]:
 
 
+#Count the number of towers
 clientes = df_eventos_abril["GeoIdCliente"].rename(columns={"GeoIdCliente":"TorreId"})
 eventos = df_eventos_abril["GeoIdEvento"].rename(columns={"GeoIdEvento":"TorreId"})
 torres = pd.concat([clientes,eventos])

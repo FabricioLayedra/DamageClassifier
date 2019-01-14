@@ -1,8 +1,0 @@
-Grafo output/graph_20160415.csv
-Num nodos:1417
-Num arcos:38650
-average degree 27.27593507410021
-Grafo output/graph_20160417.csv
-Num nodos:1743
-Num arcos:26731
-average degree 15.336201950659783

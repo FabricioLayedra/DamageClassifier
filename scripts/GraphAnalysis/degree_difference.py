@@ -18,6 +18,8 @@ fh2.readline()
 cdrs_net_2 = nx.read_edgelist(fh2, create_using=nx.DiGraph(), delimiter=",", data=(('weight',float),))
 fh2.close()
 
+#for u, v, d in cdrs_net_1.edges(data=True):
+    #print(d['weight'])
 
 #Generate a file with the description of both graphs
 dscrpt_file = open("output/description.txt","w")
@@ -44,7 +46,7 @@ in_degrees_graph_1 = dict(cdrs_net_1.in_degree(weight="weight"))
 in_degrees_graph_2 = dict(cdrs_net_2.in_degree(weight="weight"))
 
 #write in degrees results for graph 1
-'''
+
 results1 = open("output/in_degrees_graph_1.csv", "w")
 results1.write("GeoId,InDegree\n")
 for k,v in in_degrees_graph_1.items():
@@ -61,8 +63,9 @@ for k,v in in_degrees_graph_2.items():
 	print(line)
 	results2.write(line)
 results2.close()
-'''
 
+
+'''
 degree_sequence = sorted(in_degrees_graph_1.values(), reverse = True)
 dmax = max(degree_sequence)
 
@@ -71,3 +74,4 @@ plt.title("Degree rank plot")
 plt.ylabel("degree")
 plt.xlabel("rank")
 plt.show()
+'''
