@@ -3,11 +3,17 @@
 import sys
 from math import log
 
+"""script that reads a csv with distances and create a file with node A, node B and Weight fields, in order to create a graph afterwards.
+The calculation of the edges weights has the formula:
+wij = log (usersi) * distanceij / max_distance
+ """
+ 
 input_file = sys.argv[1] #name of the csv with distances
 f = open(input_file)
 
 output_file = sys.argv[2] #name of the output csv with data to create the graph
 f2 = open(output_file, 'w')
+
 
 #read the headers of the csv with distances
 f.readline() 
@@ -36,8 +42,13 @@ for record in f:
     parr_evento = fields[13]
     #obtener parroquia cliente
     parr_cliente = fields[6]
-    
-    #if (prov_evento=="MANABI" and prov_cliente=="MANABI" and parr_cliente!=parr_evento):
+    #obtener canton cliente
+    canton_cliente = fields[4]
+    #obtener canton evento
+    canton_evento = fields[11]
+
+    #if (parr_cliente!=parr_evento):
+    #if (canton_cliente!=canton_evento):
     #if (parr_cliente==parr_evento):
     #if(prov_evento!=prov_cliente):
     if (id_evento, id_cliente) in pares:

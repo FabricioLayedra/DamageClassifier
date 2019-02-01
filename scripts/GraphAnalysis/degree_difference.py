@@ -65,13 +65,3 @@ for k,v in in_degrees_graph_2.items():
 results2.close()
 
 
-'''
-degree_sequence = sorted(in_degrees_graph_1.values(), reverse = True)
-dmax = max(degree_sequence)
-
-plt.loglog(degree_sequence, 'b-',marker='o')
-plt.title("Degree rank plot")
-plt.ylabel("degree")
-plt.xlabel("rank")
-plt.show()
-'''
