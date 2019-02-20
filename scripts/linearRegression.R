@@ -11,38 +11,34 @@ df.scale$total_houses = NULL
 df.scale$parroquia = NULL
 
 #centering, scaling of input features
-#df.scale<-cbind(scale(df[1:13]),df[14])
+df.scale<-cbind(scale(df[1:13]),df[14])
 
 #do data partitioning
-#inTrain<-createDataPartition(y=house.scale$medv ,p=0.70, list=FALSE)
-#train.data <- house.scale[inTrain,]
-#test.data <- house.scale[-inTrain]
-
 inTrain = sample(1:nrow(df.scale),dim(df.scale)[1]*0.80)
 train.data = df.scale[inTrain,]
 test.data = df.scale[-inTrain,]
 
 
-#modelo lineal
+#linear regression
 set.seed(1234)
 reg <- lm(damaged_houses ~ ., data = train.data)
 summary(reg)
 tr<- data.frame(train.data$damaged_houses, reg$fitted.values, reg$residuals)
 head(tr)
 
-#prediccion 
+#prediction 
 pred_training <- predict(reg, newdata = test.data)
 vl.res <- data.frame(test.data$damaged_houses, pred_training, residuals = test.data$damaged_houses - pred_training)
 head(vl.res)
 
 library(forecast)
 #compute accuracy on training test
-#accuracy(exp(reg$fitted.values),train.data$damaged_houses)
+accuracy(exp(reg$fitted.values),train.data$damaged_houses)
 
 #compute error for test
 accuracy(pred, test.data$damaged_houses)
 
-"
+
 Xtrain = train.data[,-6]
 ytrain = train.data[,6]
 Xtest = test.data[,-6]
@@ -57,5 +53,4 @@ predNumbers <- predict(model,Xtest,type='response', s=model$lambda.min)
 #accuracy
 conf_mat <- table(predNumbers,ytest)
 acc <- sum(diag(conf_mat)) / nrow(test.data)
-acc
-"
+

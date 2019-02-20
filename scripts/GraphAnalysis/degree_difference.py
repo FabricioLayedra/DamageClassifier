@@ -47,7 +47,7 @@ in_degrees_graph_2 = dict(cdrs_net_2.in_degree(weight="weight"))
 
 #write in degrees results for graph 1
 
-results1 = open("output/in_degrees_graph_1.csv", "w")
+results1 = open("in_degrees_graph_1.csv", "w")
 results1.write("GeoId,InDegree\n")
 for k,v in in_degrees_graph_1.items():
 	line = k+","+str(v)+"\n"
@@ -56,7 +56,7 @@ for k,v in in_degrees_graph_1.items():
 results1.close()
 
 #write in degrees results for graph 2
-results2 = open("output/in_degrees_graph_2.csv", "w")
+results2 = open("in_degrees_graph_2.csv", "w")
 results2.write("GeoId,InDegree\n")
 for k,v in in_degrees_graph_2.items():
 	line = k+","+str(v)+"\n"

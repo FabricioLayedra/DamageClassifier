@@ -44,3 +44,4 @@ output_file.write("GeoId,TowerRank\n")
 for node,rank in pagerank_scores.items():
 	output_file.write(str(node)+","+str(rank)+"\n")
 output_file.close()
+print(path+"/tower_ranks.csv")

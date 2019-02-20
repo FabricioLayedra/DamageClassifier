@@ -1,4 +1,8 @@
 eventos*
 utils/
 data/
-output/
+**/output/
+scripts/col_dtypes.txt
+scripts/.RData
+scripts/.Rhistory
+**/.ipynb_checkpoints/

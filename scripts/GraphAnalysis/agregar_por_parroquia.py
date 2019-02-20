@@ -9,9 +9,14 @@ operation puede ser sum, geomean (promedio geometrico)
 import pandas as pd
 import sys
 from scipy import stats
+import numpy as np
 
-def geomean(df):
-	return stats.gmean(df["TowerRank"])
+def geo_mean(iterable):
+    a = [number for number in iterable if number>0]
+    a = np.asarray(a)
+    if(len(a)==0):
+    	return 0.0
+    return stats.gmean(a)
 
 file = sys.argv[1] #in_degrees_file
 output_file = sys.argv[2] #output file
@@ -57,6 +62,6 @@ if (operation == "sum"):
 #cuando ses agrupa por parroquia, se suma el indegree
 	indegrees_by_parr = indegrees_with_parr.groupby("Parroquia").sum().reset_index()
 else:
-	indegrees_by_parr = indegrees_with_parr.groupby("Parroquia").apply(geomean).reset_index()
+	indegrees_by_parr = indegrees_with_parr.groupby("Parroquia").aggregate(geo_mean).reset_index()
 indegrees_by_parr.to_csv(output_file, index=False)
-
+print(output_file)
