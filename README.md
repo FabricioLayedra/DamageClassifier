@@ -1,5 +1,5 @@
 # DamageClassifier
-ML models to predict affected zones after an earthquake. Ongoing research.
+ML models to predict affected zones after an earthquake. Research paper named "A Place to Go: Locating Damaged Regions after Natural Disasters through Mobile Phone Data" presented at [SIMBig 2019](https://simbig.org/SIMBig2019/en/program.html).
 
 ### Packages
 * Python 3.x
@@ -18,8 +18,8 @@ pip3 install -r scripts/requirements.txt
 ```
 ## Authors
 
-* **María Belén Guaranda** 
+* **María Belén Guaranda**[Github profile](https://github.com/soccerdroid)
 * **Galo Castillo** - [Github profile](https://github.com/gaalocastillo)
-* **Fabricio Layedra** - [PurGithub profile](https://github.com/FabricioLayedra)
+* **Fabricio Layedra** - [Github profile](https://github.com/FabricioLayedra)
 
 Members of the Big Data Research Group at ESPOL - Ecuador
