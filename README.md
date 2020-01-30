@@ -18,7 +18,7 @@ pip3 install -r scripts/requirements.txt
 ```
 ## Authors
 
-* **María Belén Guaranda**[Github profile](https://github.com/soccerdroid)
+* **María Belén Guaranda** [Github profile](https://github.com/soccerdroid)
 * **Galo Castillo** - [Github profile](https://github.com/gaalocastillo)
 * **Fabricio Layedra** - [Github profile](https://github.com/FabricioLayedra)
 
