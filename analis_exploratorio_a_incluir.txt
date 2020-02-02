@@ -1,7 +1,0 @@
-llamadas x hora
-llamdas x torre
-basicamente, tenemos un grafo de solo llamadas entrantes
-distancia de llamas x hora 
-radio de giro distibicion acumulativa; luego de un terremoto, el desastre agranda los patrones de viaje
-incluir gráfica de epicentro + torres
-
